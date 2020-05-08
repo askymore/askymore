@@ -8,23 +8,13 @@ useradd kevin -m
 su - kevin <<EOF
 cd /home/kevin
 git clone https://git.openwrt.org/openwrt/openwrt.git
-
 git fetch --tags
-
 git tag -l
-
 git checkout v19.07.2
-
 cd openwrt
-
 ./scripts/feeds update -a
-
 ./scripts/feeds install -a
-
 wget  https://raw.githubusercontent.com/askymore/askymore/master/xm1.config -O .config
-
 make defconfig
-
 make download
-
-nohup  make -j5  V=s &
+nohup make -j5 V=s &
